@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app from "../../Firebase.init";
 const auth = getAuth(app)
 
@@ -24,7 +24,14 @@ const HOise = () => {
         .thne()
     }
     const submit = e => {
-        console.log(email, pass);
+        createUserWithEmailAndPassword(auth, email, pass)
+        .then(result => {
+           
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.error(error)
+        })
         e.preventDefault();
     }
 
