@@ -13,10 +13,10 @@ const HOise = () => {
     const [passError, setPassError] = useState('')
     const [hasAccount, setHasAccount] = useState(false)
     const login = e => {
-        console.log(e.target.value);
+        setEmail(e.target.value);
     }
     const password = e => {
-        console.log(e.target.value);
+        setPass(e.target.value);
     }
 
     const handleLogin = () => {
@@ -24,6 +24,7 @@ const HOise = () => {
         .thne()
     }
     const submit = e => {
+        console.log(email, pass);
         e.preventDefault();
     }
 
@@ -31,7 +32,7 @@ const HOise = () => {
   return (
     <div>
       <div className="w-50 mx-auto">
-        <Form onClick={submit}>
+        <Form onSubmit={submit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control onBlur={login} type="email" placeholder="Enter email" />
             <Form.Text className="text-muted">
